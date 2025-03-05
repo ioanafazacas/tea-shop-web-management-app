@@ -2,9 +2,13 @@ package com.example.demo.mapper;
 
 import com.example.demo.dto.TeaDto;
 import com.example.demo.model.Tea;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@RequiredArgsConstructor
+@Component
 public class TeaMapper {
     public TeaDto teaEntityToDto(Tea tea){
         return TeaDto.builder()
@@ -12,7 +16,7 @@ public class TeaMapper {
                 .quantity(tea.getQuantity())
                 .price(tea.getPrice())
                 .description(tea.getDescription())
-                .tip(tea.getTip())
+                .category(tea.getCategory())
                 .build();
     }
     public List<TeaDto> teaListEntityToDto(List<Tea> teas){
@@ -26,7 +30,7 @@ public class TeaMapper {
                 .quantity(teaDto.quantity())
                 .price(teaDto.price())
                 .description(teaDto.description())
-                .tip(teaDto.tip())
+                .category(teaDto.category())
                 .build();
     }
 

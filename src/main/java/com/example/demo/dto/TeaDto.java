@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.Type;
+import com.example.demo.model.Category;
 import lombok.Builder;
 
 @Builder
@@ -9,6 +9,6 @@ public record TeaDto(
         int quantity,
         float price,
         String description,
-        Type tip
+        Category category
 ) {
 }

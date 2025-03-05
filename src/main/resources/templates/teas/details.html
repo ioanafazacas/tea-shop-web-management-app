@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head th:replace="~{fragments :: head}"></head>
+
+<body>
+<div th:replace="~{fragments :: header}"></div>
+
+<table class="table table-striped">
+    <tr>
+        <th>Description</th>
+        <td th:text="${tea.description()}"></td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td th:text="${tea.price()}"></td>
+    </tr>
+    <tr>
+        <th>Category</th>
+        <td th:text="${tea.category().name()}"></td>
+    </tr>
+    <tr>
+        <th>Quantity</th>
+        <td th:text="${tea.quantity()}"></td>
+    </tr>
+
+</table>
+
+</body>

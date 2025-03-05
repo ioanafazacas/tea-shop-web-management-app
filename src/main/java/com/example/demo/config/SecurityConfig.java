@@ -23,7 +23,7 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
                 .authorizeHttpRequests(authConfig -> {
-                    authConfig.requestMatchers(HttpMethod.GET, "/", "/login", "/register", "/error", "/login-error", "/logout", "/css/**").permitAll();
+                    authConfig.requestMatchers(HttpMethod.GET, "/", "/login", "/register", "/error", "/login-error", "/logout", "/css/**", "/teas", "/teas/detail?teaName=").permitAll();
                     authConfig.requestMatchers(HttpMethod.POST, "/createUser").permitAll();
                     authConfig.requestMatchers(HttpMethod.GET, "/user").hasAuthority("USER");
                     authConfig.requestMatchers(HttpMethod.GET, "/admin").hasAuthority("ADMIN");

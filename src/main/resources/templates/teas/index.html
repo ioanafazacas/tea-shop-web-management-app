@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head th:replace="~{fragments :: head}"></head>
+
+<body>
+<div th:replace="~{fragments :: header}"></div>
+
+<p th:unless="${teas} and ${teas.size()}">No Teas!</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tr th:each="tea : ${teas}">//trebuie facut ceva in privinta id-ului de la dto
+        <td><a th:href="'/teas/details?teaName=' + ${tea.name()}" th:text="${tea.name()}"></a> </td>
+    </tr>
+</table>
+
+</body>
+</html>

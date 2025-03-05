@@ -3,8 +3,6 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.awt.*;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,6 +22,7 @@ public class Tea {
     private float price = 0.0f;
     private String description; //grupate mai restrands???
     //private static Image image; //mai e de lucru
-    private Type tip;//negru , verde, fructat , medicinal
+
+    private Category category;//negru , verde, fructat , medicinal
 
 }
