@@ -30,6 +30,7 @@
 
         <label>Current Image:</label>
         <img th:src="@{'/images/' + ${tea.image}}" alt="Tea Image" width="150"/>
+        <input type="hidden" name="oldImage" th:value="${tea.image}" />
 
         <label for="imageFile">Change Image:</label>
         <input type="file" id="imageFile" name="imageFile"/>

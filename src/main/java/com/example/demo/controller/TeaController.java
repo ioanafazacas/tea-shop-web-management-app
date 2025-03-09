@@ -150,7 +150,7 @@ public class TeaController {
     }
 
     @PostMapping("update")
-    public String processUpdateTeaForm(@Valid @ModelAttribute("tea") TeaDto teaDto, Model model,@RequestParam("imageFile") MultipartFile imageFile){
+    public String processUpdateTeaForm(@Valid @ModelAttribute("tea") TeaDto teaDto, Model model,@RequestParam("imageFile") MultipartFile imageFile, @RequestParam("oldImage") String oldImage){
         String imageName = "";
         if (!imageFile.isEmpty()) {
             try {
@@ -161,7 +161,7 @@ public class TeaController {
                 e.printStackTrace();
             }
         }else{
-            imageName=teaDto.image();//trebuie gasita o metoda pentru pastrarea imaginii vechi daca nu este modificate
+            imageName=oldImage;
         }
         Tea tea= teaMapper.teaDtoToEntity(teaDto);
         tea.setImage(imageName);
