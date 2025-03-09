@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,9 +17,20 @@ public interface TeaRepository extends JpaRepository<Tea, Integer> {
     List<Tea> findAll();
     List<Tea> findByCategory(Category category);
     @Modifying
-    @Query("UPDATE Tea t SET t.quantity = :quantity, t.price = :price, t.description = :description WHERE t.name = :name")
-    Tea updateTea(@Param("quantity") int quantity,
-                   @Param("price") float price,
-                   @Param("description") String description);
+    @Transactional
+    @Query("UPDATE Tea t SET t.quantity = :quantity, t.price = :price, t.description = :description," +
+            " t.image = :image, t.category =:category" +
+            " WHERE t.name = :name")
+    void updateTea(@Param("name") String name,
+                  @Param("quantity") int quantity,
+                  @Param("price") float price,
+                  @Param("description") String description,
+                  @Param("image")String image,
+                  @Param("category")Category category
+                  );
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Tea t WHERE t.name = :name")
+    void deleteByName(@Param("name") String name);
 
 }

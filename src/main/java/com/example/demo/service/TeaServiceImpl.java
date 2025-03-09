@@ -7,6 +7,7 @@ import com.example.demo.model.Category;
 import com.example.demo.repository.TeaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -37,8 +38,10 @@ public class TeaServiceImpl implements TeaService{
     }
 
     @Override
-    public TeaDto update(Tea tea) {
-        return null;//mai trebuie regandit findByName+save
+    @Transactional
+    public void update(Tea tea) {
+        teaRepository.updateTea(tea.getName(),tea.getQuantity(),tea.getPrice(),
+                tea.getDescription(),tea.getImage(),tea.getCategory());
     }
 
     @Override
@@ -46,6 +49,17 @@ public class TeaServiceImpl implements TeaService{
         teaRepository.delete(tea);
     }
 
+    @Override
+    public void deleteTeaById(Integer id) {
+        teaRepository.findById(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteTeaByName(String name)
+    {
+        teaRepository.deleteByName(name);
+    }
     @Override
     public TeaDto findById(Integer id) {
         return teaMapper.teaEntityToDto(teaRepository.findById(id).orElse(null));

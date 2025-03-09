@@ -17,6 +17,7 @@ public class TeaMapper {
                 .price(tea.getPrice())
                 .description(tea.getDescription())
                 .category(tea.getCategory())
+                .image(tea.getImage())
                 .build();
     }
     public List<TeaDto> teaListEntityToDto(List<Tea> teas){
@@ -31,6 +32,7 @@ public class TeaMapper {
                 .price(teaDto.price())
                 .description(teaDto.description())
                 .category(teaDto.category())
+                .image(teaDto.image())
                 .build();
     }
 

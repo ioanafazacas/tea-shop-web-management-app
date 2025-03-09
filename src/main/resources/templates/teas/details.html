@@ -8,24 +8,33 @@
 <body>
 <div th:replace="~{fragments :: header}"></div>
 
-<table class="table table-striped">
-    <tr>
-        <th>Description</th>
-        <td th:text="${tea.description()}"></td>
-    </tr>
-    <tr>
-        <th>Price</th>
-        <td th:text="${tea.price()}"></td>
-    </tr>
-    <tr>
-        <th>Category</th>
-        <td th:text="${tea.category().name()}"></td>
-    </tr>
-    <tr>
-        <th>Quantity</th>
-        <td th:text="${tea.quantity()}"></td>
-    </tr>
+<div class="body">
+    <table class="table table-striped">
+        <tr>
+            <img th:src="@{'/images/' + ${tea.image}}" class="img-fluid " style="width: 200px; height: 200px; object-fit: cover;"/>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td th:text="${tea.description()}"></td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td th:text="${tea.price()}"></td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <td th:text="${tea.category().name()}"></td>
+        </tr>
+        <tr>
+            <th>Quantity</th>
+            <td th:text="${tea.quantity()}"></td>
+        </tr>
+        <tr>
+            <td><a th:href="'/teas/update?teaName=' + ${tea.name()}" th:text="Edit"></a> </td>
+        </tr>
+    </table>
+</div>
 
-</table>
-
+<div th:replace="~{fragments :: footer}"></div>
 </body>
+</html>

@@ -9,6 +9,7 @@ public record TeaDto(
         int quantity,
         float price,
         String description,
-        Category category
+        Category category,
+        String image
 ) {
 }

@@ -8,18 +8,21 @@
 <body>
 <div th:replace="~{fragments :: header}"></div>
 
-<p th:unless="${teas} and ${teas.size()}">No Teas!</p>
+<div class="body">
+    <p th:unless="${teas} and ${teas.size()}">No Teas!</p>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>Name</th>
-    </tr>
-    </thead>
-    <tr th:each="tea : ${teas}">//trebuie facut ceva in privinta id-ului de la dto
-        <td><a th:href="'/teas/details?teaName=' + ${tea.name()}" th:text="${tea.name()}"></a> </td>
-    </tr>
-</table>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tr th:each="tea : ${teas}">
+            <td><a th:href="'/teas/details?teaName=' + ${tea.name()}" th:text="${tea.name()}"></a> </td>
+        </tr>
+    </table>
+</div>
 
+<div th:replace="~{fragments :: footer}"></div>
 </body>
 </html>

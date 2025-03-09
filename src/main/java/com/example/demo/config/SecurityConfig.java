@@ -22,6 +22,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
+                //.csrf(csrf -> csrf.ignoringRequestMatchers("/teas/create"))
                 .authorizeHttpRequests(authConfig -> {
                     authConfig.requestMatchers(HttpMethod.GET, "/", "/login", "/register", "/error", "/login-error", "/logout", "/css/**", "/teas", "/teas/detail?teaName=").permitAll();
                     authConfig.requestMatchers(HttpMethod.POST, "/createUser").permitAll();
@@ -30,6 +31,8 @@ public class SecurityConfig {
                     authConfig.requestMatchers(HttpMethod.GET, "/developer").hasAuthority("DEVELOPER");
                     authConfig.requestMatchers(HttpMethod.GET, "/users").hasAnyAuthority("ADMIN", "DEVELOPER");
                     authConfig.requestMatchers(HttpMethod.GET, "/authorities").hasAnyAuthority("ADMIN", "DEVELOPER");
+                    authConfig.requestMatchers(HttpMethod.POST, "/teas/create", "/teas/delete", "/teas/update").hasAuthority("USER");
+                    authConfig.requestMatchers(HttpMethod.GET, "/teas/create","/teas/delete", "/teas/update").hasAuthority("USER");
                     authConfig.anyRequest().authenticated();
                 })
                 .formLogin(login -> {

@@ -11,8 +11,10 @@ public interface TeaService {
     TeaDto findByName(String name);
     List<TeaDto> findAll();
     List<TeaDto> findByCategory(Category category);
-    TeaDto update(Tea tea);
+    void update(Tea tea);
     void delete(Tea tea);
+    void deleteTeaById(Integer id);
+    void deleteTeaByName(String name);
     TeaDto findById(Integer id);
 
 }
