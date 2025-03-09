@@ -1,30 +1,39 @@
 <<<<<<< HEAD
-# tea-shop
-=======
-# SpringBootRenderExample
+# Tea Shop Management
 
-https://inginerie-software-demo.up.railway.app/
+## Descriere
+Acest proiect este o aplicație web pentru gestionarea unei colecții de ceaiuri. Utilizatorii pot adăuga, edita, șterge și vizualiza ceaiurile disponibile. Aplicația include, de asemenea, un sistem de autentificare și autorizare pentru controlul accesului utilizatorilor.
 
-### Remember, first create the database locally ticket_store, then run the app such that the tables are created (roles, users, users_roles)
+## Tehnologii folosite
+- **Java 17**
+- **Spring Boot** ( Spring Security, Spring Data JPA)
+- **Thymeleaf** (pentru frontend)
+- **Hibernate** (pentru interacțiunea cu baza de date)
+- **MySQL** (pentru stocarea datelor)
+- **Lombok** (pentru reducerea boilerplate-ului în cod)
+- **Bootstrap** (pentru stilizarea paginilor HTML)
 
-### Then Execute the sql statements
+## Funcționalități
+- **Gestionarea utilizatorilor cu roluri diferite** (USER, ADMIN, DEVELOPER)
+- **Adăugarea de ceaiuri noi** în baza de date
+- **Editarea unui ceai existent** (descriere, preț, cantitate, imagine, categorie)
+- **Ștergerea ceaiurilor**
+- **Vizualizarea detaliilor unui ceai**
+- **Vizualizarea listei de ceaiuri**
+
+## API Endpoints
+| Metodă | Endpoint        | Descriere |
+|--------|---------------|-----------|
+| GET    | `/teas`       | Afișează lista de ceaiuri |
+| GET    | `/teas/detail?teaName={name}` | Afișează detalii despre un ceai |
+| GET    | `/teas/create` | Formular pentru adăugarea unui ceai nou |
+| POST   | `/teas/create` | Salvează un nou ceai |
+| GET    | `/teas/edit?teaName={name}` | Formular pentru editarea unui ceai |
+| POST   | `/teas/edit` | Actualizează datele unui ceai |
+| POST   | `/teas/delete` | Șterge un ceai după nume |
+| GET    | `/users`      | Afisare tuturor utilizatorilor cu cont|
 
 
-INSERT INTO roles(id, role)
-VALUES (1, 'ADMIN'),
-       (2, 'USER'),
-       (3, 'DEVELOPER');
 
 
-
-INSERT INTO users(username, email_address, first_name, last_name, password)
-VALUES ('Admin', 'admin@admin.com', 'Admin', 'Admin', '$2a$10$FVvZNPIIP3taMKdQqwwWsejbiH1DpT/0/PbBS933b73JewnHag6hK');
-
-INSERT INTO users_roles(users_id, roles_id) VALUES (1, 1);
-
-
-$2a$10$FVvZNPIIP3taMKdQqwwWsejbiH1DpT/0/PbBS933b73JewnHag6hK    is the BCrypt hash of password Admin!1234
-
-
-### Deploy to RailWay: https://www.youtube.com/watch?v=F-Y67-DiM9c
 >>>>>>> 09cf6d1 (initial commit)
